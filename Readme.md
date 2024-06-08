@@ -17,6 +17,8 @@ O sangue é responsável por carregar uma variedade gigantesca de partículas pe
 
 <!-- ## Estrutura -->
 
+<!-- ## Links dos videos -->
+
 ## Desenvolvedores
 - Bernardo Buhr [@bernardobuhrmendonca](https://github.com/bernardobuhrmendonca)
 - Caio Henrique [@Caiohbg01](https://github.com/Caiohbg01)
