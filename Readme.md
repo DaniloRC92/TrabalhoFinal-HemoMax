@@ -1,4 +1,4 @@
-# Trabalho Final - HemoMax <img scr="Docs\images\hemomaxLogo.png" width = 50px height = 50px>
+# Trabalho Final - HemoMax <picture><img scr="Docs\images\hemomaxLogo.png" width = 50px height = 50px></picture>
 
 > [!NOTE]
 > Repositório voltado ao trabalho final das matérias:
