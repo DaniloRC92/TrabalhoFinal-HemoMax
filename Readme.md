@@ -13,9 +13,21 @@ O projeto HemoMax se trata da criação de uma inteligência artificial como uma
 ## Descrição do Problema
 O sangue é responsável por carregar uma variedade gigantesca de partículas pelo corpo, oxigênio, água, hormônios, entre outras, possibilitando a chegada dos compostos necessários para manutenção da vida celular. Considerando esse contexto e o desenvolvimento de metodologias científicas é notável a dificuldade e complexidade da análise deste composto, demandando tempo e esforço considerável para uma análise completa e confiável, que ainda sim estaria sujeita a falhas e problemas pontuais. A partir disso definimos esse como o ponto central para desenvolvimento do nosso projeto, ou seja, o problema que o nosso sistema buscará reduzir.
 
-<!-- ## Funcionalidades -->
+## Linguagens e Frameworks
+- BackEnd: desenvolvido em Java com o Framework Spring Boot.
+- SGBD: MySQL.
+- REST API: Comunicação entre o FrontEnd e o BackEnd.
 
-<!-- ## Estrutura -->
+ ## Funcionalidades 
+ - Cadastro de Administrador e de Biomédico: Criação dos logins e senhas para utilização do HemoMax.
+ - Controle de acesso: Apenas aqueles com o login de Administrador terão permissão para remover ou alterar um login de membros da instituição.
+ - Validação via Token: Cada requisição será enviada com um token para validação. Uma requisição que não possuir o token será desconsiderada.
+ - Criptografia de senhas: Todas as senhas serão criptografadas antes de serem alocadas no banco de dados, garantindo a integridade dos dados.
+
+
+## Estrutura
+Para a construção do projeto, utilizamos a Arquitetura MVC (Model, View, Controller).
+
 
 <!-- ## Links dos videos -->
 
