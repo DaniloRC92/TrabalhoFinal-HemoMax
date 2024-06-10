@@ -31,7 +31,6 @@ public class Responsavel implements UserDetails {
     private String email;
     @JsonIgnore
     private String senha;
-    private boolean ativo;
     @OneToOne(mappedBy = "responsavel")
     private Instituicao instituicao;
     public Responsavel(DadosCadastroResponsavel dados) {
@@ -40,7 +39,6 @@ public class Responsavel implements UserDetails {
         telefone = dados.telefone();
         email = dados.email();
         senha = dados.senha();
-        ativo = true;
     }
     public void atualizarInformacoes(DadosAtualizacaoResponsavel dados) {
         if (dados.nome() != null) {
@@ -58,9 +56,6 @@ public class Responsavel implements UserDetails {
         if (dados.senha() != null) {
             this.senha = dados.senha();
         }
-    }
-    public void excluir() {
-        this.ativo = false;
     }
 
     public long getId() {

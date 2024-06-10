@@ -35,7 +35,7 @@ public class BiomedicoController {
     }
     @GetMapping
     public ResponseEntity<Page<DadosListagemBiomedico>> listar(@PageableDefault(size=10,sort={"nome"}) Pageable paginacao){
-        var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemBiomedico::new);
+        var page = repository.findAll(paginacao).map(DadosListagemBiomedico::new);
         return ResponseEntity.ok(page);
     }
     @GetMapping("/{id}")
@@ -55,10 +55,7 @@ public class BiomedicoController {
     @Transactional
     @Secured("ADM_USER")
     public ResponseEntity<Object> excluir (@PathVariable Long id){
-        // repository.deleteById(id); Exclusão física
-        var biomedico = repository.getReferenceById(id);
-        biomedico.excluir(); // Exclusão lógica
-
+        repository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }

@@ -31,7 +31,6 @@ public class Biomedico implements UserDetails {
     private String email;
     @JsonIgnore
     private String senha;
-    private boolean ativo;
     @ManyToOne
     private Instituicao instituicao;
     @ManyToMany(mappedBy = "biomedicos")
@@ -41,7 +40,6 @@ public class Biomedico implements UserDetails {
         this.cpf = dados.cpf();
         this.email = dados.email();
         this.senha = dados.senha();
-        ativo = true;
     }
 
     public Long getId() {
@@ -75,9 +73,6 @@ public class Biomedico implements UserDetails {
         }
     }
 
-    public void excluir() {
-        this.ativo = false;
-    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("BIOMEDICO_USER"));

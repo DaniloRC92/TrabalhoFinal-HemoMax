@@ -24,7 +24,6 @@ public class ResponsavelController {
     private ResponsavelRepository repository;
     @PostMapping
     @Transactional
-    @Secured("ADM_USER")
     public ResponseEntity<DadosDetalhamentoResponsavel> cadastrar(@RequestBody @Valid DadosCadastroResponsavel dados, UriComponentsBuilder uriBuilder){
         var responsavel = new Responsavel(dados);
         repository.save(responsavel);
@@ -37,7 +36,7 @@ public class ResponsavelController {
     @GetMapping
     @Secured("ADM_USER")
     public ResponseEntity<Page<DadosListagemResponsavel>> listar(@PageableDefault(size=10,sort={"nome"}) Pageable paginacao){
-        var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemResponsavel::new);
+        var page = repository.findAll(paginacao).map(DadosListagemResponsavel::new);
         return ResponseEntity.ok(page);
     }
     @GetMapping("/{id}")
@@ -58,10 +57,7 @@ public class ResponsavelController {
     @Transactional
     @Secured("ADM_USER")
     public ResponseEntity<Object> excluir (@PathVariable Long id){
-        // repository.deleteById(id); Exclusão física
-        var responsavel = repository.getReferenceById(id);
-        responsavel.excluir(); // Exclusão lógica
-
+        repository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 

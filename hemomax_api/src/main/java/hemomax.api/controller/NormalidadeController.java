@@ -33,7 +33,7 @@ public class NormalidadeController {
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemNormalidade>> listar(@PageableDefault(size=10,sort={"nome"}) Pageable paginacao){
-        var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemNormalidade::new);
+        var page = repository.findAll(paginacao).map(DadosListagemNormalidade::new);
         return ResponseEntity.ok(page);
     }
     @GetMapping("/{id}")
@@ -45,9 +45,7 @@ public class NormalidadeController {
     @Transactional
     @Secured("ADM_USER")
     public ResponseEntity<Object> excluir (@PathVariable Long id){
-        // repository.deleteById(id); Exclusão física
         var normalidade = repository.getReferenceById(id);
-        normalidade.excluir(); // Exclusão lógica
 
         return ResponseEntity.noContent().build();
     }

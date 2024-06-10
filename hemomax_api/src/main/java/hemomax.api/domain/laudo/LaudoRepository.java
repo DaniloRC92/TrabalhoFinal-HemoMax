@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LaudoRepository extends JpaRepository<Laudo,Long> {
-    Page<Laudo> findAllByAtivoTrue(Pageable paginacao);
+    Page<Laudo> findAll(Pageable paginacao);
 }

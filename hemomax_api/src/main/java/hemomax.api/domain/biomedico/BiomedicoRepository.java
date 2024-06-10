@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BiomedicoRepository extends JpaRepository<Biomedico,Long> {
     Biomedico findByEmail(String email);
-    Page<Biomedico> findAllByAtivoTrue(Pageable paginacao);
+    Page<Biomedico> findAll(Pageable paginacao);
 }

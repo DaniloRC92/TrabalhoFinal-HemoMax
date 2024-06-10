@@ -15,17 +15,12 @@ public class Normalidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    private boolean ativo;
     @OneToOne(mappedBy = "normalidade")
     private Instituicao instituicao;
     public Normalidade(){
-        this.ativo = true;
     }
 
     public Long getId() {
         return id;
-    }
-    public void excluir() {
-        this.ativo = false;
     }
 }

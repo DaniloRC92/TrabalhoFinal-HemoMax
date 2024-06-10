@@ -35,7 +35,7 @@ public class InstituicaoController {
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemInstituicao>> listar(@PageableDefault(size=10,sort={"nome"}) Pageable paginacao){
-        var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemInstituicao::new);
+        var page = repository.findAll(paginacao).map(DadosListagemInstituicao::new);
         return ResponseEntity.ok(page);
     }
     @GetMapping("/{id}")
@@ -55,9 +55,7 @@ public class InstituicaoController {
     @Transactional
     @Secured("ADM_USER")
     public ResponseEntity<Object> excluir (@PathVariable Long id){
-        // repository.deleteById(id); Exclusão física
         var instituicao = repository.getReferenceById(id);
-        instituicao.excluir(); // Exclusão lógica
 
         return ResponseEntity.noContent().build();
     }

@@ -28,7 +28,6 @@ public class Endereco {
     private int numero;
     private String complemento;
     private String cep;
-    private boolean ativo;
     @OneToOne(mappedBy = "endereco")
     private Instituicao instituicao;
     public Endereco(DadosCadastroEndereco dados){
@@ -39,7 +38,6 @@ public class Endereco {
         this.numero = dados.numero();
         this.complemento = dados.complemento();
         this.cep = dados.cep();
-        this.ativo = true;
     }
 
     public Long getId() {
@@ -98,7 +96,4 @@ public class Endereco {
         }
     }
 
-    public void excluir() {
-        this.ativo = false;
-    }
 }

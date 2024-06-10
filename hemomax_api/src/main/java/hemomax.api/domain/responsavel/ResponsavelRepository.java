@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ResponsavelRepository extends JpaRepository<Responsavel,Long> {
     Responsavel findByEmail(String email);
-    Page<Responsavel> findAllByAtivoTrue(Pageable paginacao);
+    Page<Responsavel> findAll(Pageable paginacao);
 }

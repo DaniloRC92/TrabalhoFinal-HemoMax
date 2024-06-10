@@ -32,11 +32,12 @@ public class AutenticacaoController {
     public ResponseEntity<DadosTokenJWT> efetuarLogin(@RequestBody @Valid DadosAutenticacao dados) {
         var authenticationToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
         var authentication = manager.authenticate(authenticationToken);
-        String tokenJWT = null;
-        if (responsavelRepository.findByEmail(dados.login()) == null){
-            tokenJWT = tokenService.gerarToken((Biomedico)authentication.getPrincipal());
+
+        String tokenJWT;
+        if (responsavelRepository.findByEmail(dados.login()) == null) {
+            tokenJWT = tokenService.gerarToken((Biomedico) authentication.getPrincipal());
         } else {
-            tokenJWT = tokenService.gerarToken((Responsavel)authentication.getPrincipal());
+            tokenJWT = tokenService.gerarToken((Responsavel) authentication.getPrincipal());
         }
         return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
     }

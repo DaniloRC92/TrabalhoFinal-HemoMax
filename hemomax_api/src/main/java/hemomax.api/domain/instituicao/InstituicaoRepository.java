@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InstituicaoRepository extends JpaRepository<Instituicao,Long> {
-    Page<Instituicao> findAllByAtivoTrue(Pageable paginacao);
+    Page<Instituicao> findAll(Pageable paginacao);
 }

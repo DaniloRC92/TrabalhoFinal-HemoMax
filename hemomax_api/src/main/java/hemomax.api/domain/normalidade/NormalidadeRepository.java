@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NormalidadeRepository extends JpaRepository<Normalidade,Long> {
-    Page<Normalidade> findAllByAtivoTrue(Pageable paginacao);
+    Page<Normalidade> findAll(Pageable paginacao);
 }

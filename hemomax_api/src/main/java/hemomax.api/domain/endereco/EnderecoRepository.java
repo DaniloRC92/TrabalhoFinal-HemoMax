@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EnderecoRepository extends JpaRepository<Endereco,Long> {
-    Page<Endereco> findAllByAtivoTrue(Pageable paginacao);
+    Page<Endereco> findAll(Pageable paginacao);
 }

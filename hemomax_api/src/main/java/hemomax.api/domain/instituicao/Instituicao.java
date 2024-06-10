@@ -25,20 +25,21 @@ public class Instituicao {
     @Column(name = "id")
     private Long id;
     private String nome;
-    private boolean ativo;
     @OneToMany(mappedBy = "instituicao")
     private List<Assinatura> assinatura;
     @OneToMany(mappedBy = "instituicao")
     private List<Biomedico> biomedico;
     @OneToOne
+    @JoinColumn(name = "endereco")
     private Endereco endereco;
     @OneToOne
+    @JoinColumn(name = "normalidade")
     private Normalidade normalidade;
     @OneToOne
+    @JoinColumn(name = "responsavel")
     private Responsavel responsavel;
     public Instituicao(DadosCadastroInstituicao dados){
         this.nome = dados.nome();
-        this.ativo = true;
     }
 
     public Long getId() {
@@ -55,7 +56,4 @@ public class Instituicao {
         }
     }
 
-    public void excluir() {
-        this.ativo = false;
-    }
 }
