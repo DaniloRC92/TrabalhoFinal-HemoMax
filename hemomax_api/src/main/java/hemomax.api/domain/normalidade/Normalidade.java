@@ -1,11 +1,8 @@
 package hemomax.api.domain.normalidade;
 
-import hemomax.api.domain.instituicao.Instituicao;
+import hemomax.api.domain.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Table(name = "normalidades")
 @Entity(name = "normalidade")
@@ -16,7 +13,7 @@ public class Normalidade {
     @Column(name = "id")
     private Long id;
     @OneToOne(mappedBy = "normalidade")
-    private Instituicao instituicao;
+    private User usuario;
     public Normalidade(){
     }
 

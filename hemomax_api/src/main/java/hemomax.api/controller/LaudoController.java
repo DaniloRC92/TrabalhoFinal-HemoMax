@@ -20,6 +20,7 @@ public class LaudoController {
     private LaudoRepository repository;
     @PostMapping
     @Transactional
+    @Secured("ROLE_USER")
     public ResponseEntity<DadosDetalhamentoLaudo> cadastrar(UriComponentsBuilder uriBuilder){
         var laudo = new Laudo();
         repository.save(laudo);
@@ -29,22 +30,23 @@ public class LaudoController {
         return ResponseEntity.created(uri).body(new DadosDetalhamentoLaudo(laudo));
     }
     @GetMapping
+    @Secured("ROLE_USER")
     public ResponseEntity<Page<DadosListagemLaudo>> listar(@PageableDefault(size=10,sort={"nome"}) Pageable paginacao){
         var page = repository.findAll(paginacao).map(DadosListagemLaudo::new);
         return ResponseEntity.ok(page);
     }
     @GetMapping("/{id}")
+    @Secured("ROLE_USER")
     public ResponseEntity<DadosDetalhamentoLaudo> detalhar(@PathVariable Long id){
-        var responsavel = repository.getReferenceById(id);
-        return ResponseEntity.ok(new DadosDetalhamentoLaudo(responsavel));
+        var laudo = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoLaudo(laudo));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    @Secured("ADM_USER")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<Object> excluir (@PathVariable Long id){
-        var laudo = repository.getReferenceById(id);
-
+        repository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }

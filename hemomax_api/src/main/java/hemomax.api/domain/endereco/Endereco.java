@@ -1,14 +1,11 @@
 package hemomax.api.domain.endereco;
 
-import hemomax.api.domain.assinatura.Assinatura;
-import hemomax.api.domain.instituicao.Instituicao;
+import hemomax.api.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Table(name = "enderecos")
 @Entity(name = "endereco")
@@ -29,7 +26,7 @@ public class Endereco {
     private String complemento;
     private String cep;
     @OneToOne(mappedBy = "endereco")
-    private Instituicao instituicao;
+    private User usuarios;
     public Endereco(DadosCadastroEndereco dados){
         this.estado = dados.estado();
         this.cidade = dados.cidade();
