@@ -1,4 +1,4 @@
-package hemomax.api.infra.security;
+package hemomax.api.domain.user;
 
 public record DadosTokenJWT(String token) {
 }

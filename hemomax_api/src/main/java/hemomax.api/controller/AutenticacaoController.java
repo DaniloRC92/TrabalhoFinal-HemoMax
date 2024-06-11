@@ -4,7 +4,7 @@ import hemomax.api.domain.biomedico.Biomedico;
 import hemomax.api.domain.biomedico.BiomedicoRepository;
 import hemomax.api.domain.responsavel.Responsavel;
 import hemomax.api.domain.responsavel.ResponsavelRepository;
-import hemomax.api.domain.usuario.DadosAutenticacao;
+import hemomax.api.domain.user.DadosAutenticacao;
 import hemomax.api.infra.security.DadosTokenJWT;
 import hemomax.api.infra.security.TokenService;
 import jakarta.validation.Valid;
