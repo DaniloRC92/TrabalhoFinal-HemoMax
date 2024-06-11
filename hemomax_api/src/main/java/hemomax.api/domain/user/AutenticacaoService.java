@@ -11,10 +11,11 @@ public class AutenticacaoService implements UserDetailsService {
     private UserRepository repository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDetails user = responsavelRepository.findByEmail(username);
-        if (user == null){
-            user = biomedicoRepository.findByEmail(username);
+        try {
+            return repository.findByLogin(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
-        return user;
     }
 }

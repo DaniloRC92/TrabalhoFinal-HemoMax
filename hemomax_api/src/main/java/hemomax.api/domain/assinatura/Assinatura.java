@@ -1,6 +1,6 @@
 package hemomax.api.domain.assinatura;
 
-import hemomax.api.domain.instituicao.Instituicao;
+import hemomax.api.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -21,7 +21,7 @@ public class Assinatura {
     private String dataTransacao;
     private String plano;
     @ManyToOne
-    private Instituicao instituicao;
+    private User usuario;
     public Assinatura(DadosCadastroAssinatura dados){
         this.plano = dados.plano();
         this.dataTransacao = dados.dataTransacao();

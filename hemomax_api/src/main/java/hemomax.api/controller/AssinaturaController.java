@@ -23,7 +23,7 @@ public class AssinaturaController {
     private AssinaturaRepository repository;
     @PostMapping
     @Transactional
-    @Secured("ADM_USER")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<DadosDetalhamentoAssinatura> cadastrar(@RequestBody @Valid DadosCadastroAssinatura dados, UriComponentsBuilder uriBuilder){
         var assinatura = new Assinatura(dados);
         repository.save(assinatura);
@@ -33,13 +33,13 @@ public class AssinaturaController {
         return ResponseEntity.created(uri).body(new DadosDetalhamentoAssinatura(assinatura));
     }
     @GetMapping
-    @Secured("ADM_USER")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<Page<DadosListagemAssinatura>> listar(@PageableDefault(size=10,sort={"nome"}) Pageable paginacao){
         var page = repository.findAll(paginacao).map(DadosListagemAssinatura::new);
         return ResponseEntity.ok(page);
     }
     @GetMapping("/{id}")
-    @Secured("ADM_USER")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<DadosDetalhamentoAssinatura> detalhar(@PathVariable Long id){
         var assinatura = repository.getReferenceById(id);
         return ResponseEntity.ok(new DadosDetalhamentoAssinatura(assinatura));

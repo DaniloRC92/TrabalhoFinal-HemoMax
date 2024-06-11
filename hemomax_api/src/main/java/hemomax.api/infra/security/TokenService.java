@@ -4,8 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import hemomax.api.domain.biomedico.Biomedico;
-import hemomax.api.domain.responsavel.Responsavel;
+import hemomax.api.domain.user.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,35 +16,23 @@ import java.time.ZoneOffset;
 public class TokenService {
     @Value("${api.security.token.secret}")
     private String secret;
-    public String gerarToken(Responsavel responsavel){
+    public String gerarToken(User user){
         try{
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withIssuer("API Hemomax")
-                    .withSubject(responsavel.getUsername())
+                    .withIssuer("API-Hemomax")
+                    .withSubject(user.getUsername())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
         } catch (JWTCreationException e){
             throw new RuntimeException("erro ao gerar token jwt ", e);
         }
     }
-    public String gerarToken(Biomedico biomedico) {
-        try{
-            var algoritmo = Algorithm.HMAC256(secret);
-            return JWT.create()
-                    .withIssuer("API Hemomax")
-                    .withSubject(biomedico.getUsername())
-                    .withExpiresAt(dataExpiracao())
-                    .sign(algoritmo);
-        } catch (JWTCreationException e){
-            throw new RuntimeException("erro ao gerar token jwt ", e);
-        }
-    }
-    public String getSubject(String tokenJWT) {
+    public String validarToken(String tokenJWT) {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.require(algoritmo)
-                    .withIssuer("API Hemomax")
+                    .withIssuer("API-Hemomax")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();
