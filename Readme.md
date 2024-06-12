@@ -28,8 +28,8 @@ O sangue é responsável por carregar uma variedade gigantesca de partículas pe
 ## Estrutura
 Para a construção do projeto, utilizamos a Arquitetura MVC (Model, View, Controller).
 
-
-<!-- ## Links dos videos -->
+## Links dos videos
+- BackEnd: https://youtu.be/8B0oUSQrEJ8
 
 ## Desenvolvedores
 - Bernardo Buhr [@bernardobuhrmendonca](https://github.com/bernardobuhrmendonca)
