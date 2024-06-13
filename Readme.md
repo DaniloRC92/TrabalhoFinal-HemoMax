@@ -30,6 +30,7 @@ Para a construção do projeto, utilizamos a Arquitetura MVC (Model, View, Contr
 
 ## Links dos videos
 - BackEnd: https://youtu.be/8B0oUSQrEJ8
+- Banco de Dados: https://youtu.be/qSgR5PeUz8s
 
 ## Desenvolvedores
 - Bernardo Buhr [@bernardobuhrmendonca](https://github.com/bernardobuhrmendonca)
